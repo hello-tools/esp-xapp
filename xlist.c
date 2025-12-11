@@ -67,17 +67,17 @@ void xlist_destroy(xlist_t *list) {
     free(list);
 }
 
-int xlist_add(xlist_t *list, void *data, int data_length) {
+xlist_item_t *xlist_add(xlist_t *list, void *data, int data_length) {
     if (list == NULL) {
-        return -1;
+        return NULL;
     }
     if (list->count >= list->max_count) {
-        return -1;
+        return NULL;
     }
 
     xlist_item_t *new_item = create_item(data, data_length);
     if (new_item == NULL) {
-        return -1;
+        return NULL;
     }
 
     if (list->tail == NULL) {
@@ -89,7 +89,7 @@ int xlist_add(xlist_t *list, void *data, int data_length) {
         list->tail = new_item;
     }
     list->count++;
-    return 0;
+    return new_item;
 }
 
 int xlist_remove(xlist_t *list, xlist_item_t *item) {

@@ -23,7 +23,7 @@ typedef struct {
 
 xlist_t *xlist_create(int max_count);
 void xlist_destroy(xlist_t *list);
-int xlist_add(xlist_t *list, void *data, int data_length);
+xlist_item_t *xlist_add(xlist_t *list, void *data, int data_length);
 int xlist_remove(xlist_t *list, xlist_item_t *item);
 xlist_item_t *xlist_get(xlist_t *list, int index);
 int xlist_size(xlist_t *list);
